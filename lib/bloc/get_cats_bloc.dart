@@ -13,7 +13,7 @@ class GetCatsBloc extends Bloc<GetCatsEvent, GetCatsState> {
   GetCatsBloc({required this.repo}) : super(GetCatsInitial()) {
     on<GetCatsPhoto>((event, emit) async {
       emit(GetCatsLoading());
-      final result = await repo.getCatsData();
+      final result = await repo.getCatsData(event.number ?? "1");
       emit(GetCatsSuccess(data: result));
     });
   }

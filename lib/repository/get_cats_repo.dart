@@ -6,8 +6,8 @@ class GetCatRepo{
 
   GetCatRepo({required this.dio});
 
-  Future<List<Model>> getCatsData() async{
-    final response = await dio.get("/search?limit=1");
+  Future<List<Model>> getCatsData(String number) async{
+    final response = await dio.get("/search?limit=$number");
     final result = (response.data as List).map((e) => Model.fromJson(e)).toList();
     return result;
   }
